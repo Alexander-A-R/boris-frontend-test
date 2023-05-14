@@ -4,23 +4,18 @@ import {Tab} from './Tab'
 
 interface TabPanelProps {
 	activeTab: string
-	setTab: (title: string) => void
-	setSearchParams: any
+	types: string[]
+	setSearchParams: (tab: URLSearchParams) => void
 }
 
-export function TabPanel({ activeTab, setTab, setSearchParams }: TabPanelProps) {
-
-	const types: string[] = ['Income', 'Outcome', 'Loan', 'Investment']
-
-	
-
+export function TabPanel({ activeTab, types, setSearchParams }: TabPanelProps) {
 
 	return (
 		<div className="flex border-b border-b-gray-300">
 			{types.map((type, index) => {
 				const clicked = +activeTab === index
 				return (
-					<Tab title={type} clicked={clicked} setTab={setTab} setSearchParams={setSearchParams} tabId={index} key={index}/>
+					<Tab title={type} clicked={clicked} setSearchParams={setSearchParams} tabId={index} key={index}/>
 				)
 			})}
 		</div>

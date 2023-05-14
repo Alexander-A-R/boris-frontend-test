@@ -3,17 +3,15 @@ import React from 'react';
 interface TabProps {
 	title: string
 	clicked: boolean
-	setTab: (title: string) => void
-	setSearchParams: (params: any) => void
+	setSearchParams: (tab: URLSearchParams) => void
 	tabId: number
 }
 
-export function Tab({title, clicked, setTab, setSearchParams, tabId} : TabProps) {
+export function Tab({title, clicked, setSearchParams, tabId} : TabProps) {
 
 	function clickHandler() {
-		setTab(title)
-		setSearchParams({tab: String(tabId)})
-
+		const params = new URLSearchParams(`tab=${tabId}`)
+		setSearchParams(params)
 	}
 
 	const className = "flex items-center justify-center flex-1 min-w-min h-10 border-t-2 border-x border-black border-bottom-0 rounded-t-md cursor-pointer select-none"
@@ -21,7 +19,7 @@ export function Tab({title, clicked, setTab, setSearchParams, tabId} : TabProps)
 
 	return (
 		<div className={clicked ? `${className} ${classClicked}` : className}
-				onClick={() => clickHandler()}
+				onClick={clickHandler}
 			><span>{title}</span></div>
 	)
 }
