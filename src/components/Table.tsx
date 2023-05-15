@@ -1,9 +1,9 @@
 import React from 'react';
-import {IClient} from '../models'
+import {ICustomer} from '../models'
 import {TableRow} from './TableRow'
 
 interface TableProps {
-	data: IClient[]
+	data: ICustomer[]
 }
 
 export function Table({ data }: TableProps) {
@@ -17,9 +17,9 @@ export function Table({ data }: TableProps) {
 					<span className="font-semibold">Amount</span>
 				</div>
 			</div>
-			{data.map((client, index) => {
-				return <TableRow name={client.name} amount={client.amount} key={client._id}/>
-			})}
+			{data.map( customer => {
+				return <TableRow name={ customer.name } amount={ customer.amount } key={ customer._id }/>
+			} )}
 		</div>
 	)
 }

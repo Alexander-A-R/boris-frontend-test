@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {ITab} from '../models'
 import {Tab} from './Tab'
 
 
+
 interface TabPanelProps {
-	activeTab: string
-	types: string[]
-	setSearchParams: (tab: URLSearchParams) => void
+	tabs: ITab[]
+	onChange: (tabId: string) => void
 }
 
-export function TabPanel({ activeTab, types, setSearchParams }: TabPanelProps) {
+export function TabPanel({tabs, onChange }: TabPanelProps) {
+
+	function clickTabHandler(id: string) {
+		onChange(id)
+	}
 
 	return (
 		<div className="flex border-b border-b-gray-300">
-			{types.map((type, index) => {
-				const clicked = +activeTab === index
+			{tabs.map(({ title, isActive, id }) => {
 				return (
-					<Tab title={type} clicked={clicked} setSearchParams={setSearchParams} tabId={index} key={index}/>
+					<Tab title={title} isActive={isActive} onClick={() => clickTabHandler(id)} key={id}/>
 				)
 			})}
 		</div>

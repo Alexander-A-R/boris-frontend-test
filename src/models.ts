@@ -1,4 +1,6 @@
-export interface IClient {
+
+
+export interface ICustomer {
 	readonly _id: string
 	amount: number
 	type: string
@@ -10,4 +12,17 @@ export interface IClient {
 	email: string
 	phone: string
 	address: string
+}
+
+export interface ITab {
+	title: string
+	id: string
+	isActive: boolean
+	type: string
+}
+
+export interface ITabs {
+	data: ITab[]
+	setActiveTab: (id: string) => void
+	getFilterType: (id: string) => string | undefined
 }

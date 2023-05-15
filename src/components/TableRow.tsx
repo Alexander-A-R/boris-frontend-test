@@ -15,7 +15,7 @@ export function TableRow({name, amount}: TableRowProps) {
 				<span>{`${name.first} ${name.last}`}</span>
 			</div>
 			<div className="flex-1">
-				<span>{String(amount)}</span>
+				<span>{`${amount}`}</span>
 			</div>
 		</div>
 	)
