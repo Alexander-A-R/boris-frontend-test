@@ -12,8 +12,8 @@ export function Tab({title, isActive, onClick} : TabProps) {
 	const classClicked = "bg-slate-300"
 
 	return (
-		<div className={isActive ? `${className} ${classClicked}` : className}
-				onClick={onClick}
+		<div className={ isActive ? `${className} ${classClicked}` : className }
+				onClick={ onClick }
 			><span>{title}</span></div>
 	)
 }

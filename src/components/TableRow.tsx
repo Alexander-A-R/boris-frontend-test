@@ -8,7 +8,7 @@ interface TableRowProps {
 	amount: number
 }
 
-export function TableRow({name, amount}: TableRowProps) {
+export function TableRow( { name, amount }: TableRowProps ) {
 	return (
 		<div className="flex leading-8 text-center border-b border-b-gray-300 last:border-0">
 			<div className="flex-1">

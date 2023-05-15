@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {ITab} from '../models'
+import React from 'react';
 import {Tab} from './Tab'
+import {ITab} from '../models'
 
 
 
@@ -11,15 +11,11 @@ interface TabPanelProps {
 
 export function TabPanel({tabs, onChange }: TabPanelProps) {
 
-	function clickTabHandler(id: string) {
-		onChange(id)
-	}
-
 	return (
 		<div className="flex border-b border-b-gray-300">
 			{tabs.map(({ title, isActive, id }) => {
 				return (
-					<Tab title={title} isActive={isActive} onClick={() => clickTabHandler(id)} key={id}/>
+					<Tab title={ title } isActive={ isActive } onClick={ () => onChange(id) } key={ id }/>
 				)
 			})}
 		</div>

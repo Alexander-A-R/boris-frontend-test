@@ -1,9 +1,8 @@
-import {useState} from 'react'
 import {ITab} from '../models'
 
-export function useTabs(id: string) {
+export function useTabs() {
 
-	const initTabs = [
+	const tabs: ITab[] = [
 				{
 					title: 'Income',
 					id: '0',
@@ -29,8 +28,9 @@ export function useTabs(id: string) {
 					type: 'investment'
 				},
 			]
-	function initActiveTab(id: string) {
-		return initTabs.map(tab => {
+
+	function setActiveTab(id: string) {
+		tabs.map(tab => {
 			if (tab.id === id) {
 				tab.isActive = true
 				return tab
@@ -39,22 +39,6 @@ export function useTabs(id: string) {
 				return tab
 			}
 		})
-	}
-
-	const data = initActiveTab(id)
-
-	const [tabs, setTabs] = useState<ITab[]>(data)
-
-	function setActiveTab(id: string) {
-		setTabs(prev => prev.map(tab => {
-			if (tab.id === id) {
-				tab.isActive = true
-				return tab
-			} else {
-				tab.isActive = false
-				return tab
-			}
-		}))
 	}
 
 	function getFilterType(id: string) {

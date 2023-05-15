@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import json from '../data/data.json'
+import {useState, useEffect} from 'react';
 import {ICustomer} from '../models'
+import json from '../data/data.json'
 
 export function useData() {
 	const [data, setData] = useState<ICustomer[]>([])

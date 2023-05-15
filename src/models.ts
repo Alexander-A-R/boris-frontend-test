@@ -20,9 +20,3 @@ export interface ITab {
 	isActive: boolean
 	type: string
 }
-
-export interface ITabs {
-	data: ITab[]
-	setActiveTab: (id: string) => void
-	getFilterType: (id: string) => string | undefined
-}
