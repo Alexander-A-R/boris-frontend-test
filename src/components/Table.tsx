@@ -18,7 +18,7 @@ export function Table({ data }: TableProps) {
 				<tbody>
 					{data.map(customer => {
 						return (
-							<tr className="h-9 border-b border-b-gray-300 text-center last:border-none">
+							<tr className="h-9 border-b border-b-gray-300 text-center last:border-none" key={customer._id}>
 								<td className="w-3/6">
 									{ `${customer.name.first} ${customer.name.last}` }
 								</td>
@@ -33,8 +33,3 @@ export function Table({ data }: TableProps) {
 		</div>
 	)
 }
-
-/*<div className="">
-/*{data.map( customer => {
-				return <TableRow name={ customer.name } amount={ customer.amount } key={ customer._id }/>
-			} )}*/

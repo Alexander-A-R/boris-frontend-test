@@ -19,13 +19,13 @@ export function useData(tab: string) {
 	useEffect(() => {
 		// there may be a request to the server and that it immediately gives the filtered array
 		try {
-			const filteredData = filterData(json.data, type)
-			if (!filteredData) {
+			if (!type) {
 				const error = new Error('incorrect request')
 				error.name = 'data error'
 				throw error
 			}
-			setData(filteredData)
+			const filteredData = filterData(json.data, type)
+			if (filteredData) setData(filteredData)
 		} catch(err: any) {
 			if (err.name === 'data error') setError(true)
 				else throw err
@@ -34,8 +34,7 @@ export function useData(tab: string) {
 
 
 // filters the data and returns it, or if the type is not specified, then undefined
-	function filterData(data: ICustomer[], type: string | undefined) {
-		if (!type) return undefined
+	function filterData(data: ICustomer[], type: string) {
 		return data.filter(customer => customer.type === type)
 	}
 
