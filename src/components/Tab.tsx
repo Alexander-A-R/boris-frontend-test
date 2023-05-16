@@ -2,18 +2,19 @@ import React from 'react';
 
 interface TabProps {
 	title: string
+	id: string
+	onClick: (id: string) => void
 	isActive: boolean
-	onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-export function Tab({title, isActive, onClick} : TabProps) {
+export function Tab({title, id, isActive, onClick} : TabProps) {
 
-	const className = "flex items-center justify-center flex-1 min-w-min h-10 border-t-2 border-x border-black border-bottom-0 rounded-t-md cursor-pointer select-none"
-	const classClicked = "bg-slate-300"
+	const classTab = "flex items-center justify-center flex-1 min-w-min h-10 border-t-2 border-x border-black border-bottom-0 rounded-t-md cursor-pointer select-none"
+	const classTabActive = "bg-slate-300"
 
 	return (
-		<div className={ isActive ? `${className} ${classClicked}` : className }
-				onClick={ onClick }
+		<div className={ isActive ? `${classTab} ${classTabActive}` : classTab }
+				onClick={ () => onClick(id) }
 			><span>{title}</span></div>
 	)
 }

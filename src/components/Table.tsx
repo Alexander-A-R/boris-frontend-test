@@ -1,6 +1,6 @@
-import React from 'react';
-import {ICustomer} from '../models'
+import React from 'react'
 import {TableRow} from './TableRow'
+import {ICustomer} from '../models'
 
 interface TableProps {
 	data: ICustomer[]

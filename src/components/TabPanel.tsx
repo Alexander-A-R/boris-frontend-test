@@ -1,23 +1,19 @@
 import React from 'react';
 import {Tab} from './Tab'
-import {ITab} from '../models'
-
 
 
 interface TabPanelProps {
-	tabs: ITab[]
-	onChange: (tabId: string) => void
+	activeTab: string
+	onChange: (id: string) => void
 }
 
-export function TabPanel({tabs, onChange }: TabPanelProps) {
-
+export function TabPanel({ activeTab, onChange }: TabPanelProps) {
 	return (
 		<div className="flex border-b border-b-gray-300">
-			{tabs.map(({ title, isActive, id }) => {
-				return (
-					<Tab title={ title } isActive={ isActive } onClick={ () => onChange(id) } key={ id }/>
-				)
-			})}
+			<Tab title={'Income'} id={'0'} onClick={onChange} isActive={activeTab === '0'} />
+			<Tab title={'Outcome'} id={'1'} onClick={onChange} isActive={activeTab === '1'} />
+			<Tab title={'Loans'} id={'2'} onClick={onChange} isActive={activeTab === '2'} />
+			<Tab title={'Investments'} id={'3'} onClick={onChange} isActive={activeTab === '3'} />
 		</div>
 	)
 }
