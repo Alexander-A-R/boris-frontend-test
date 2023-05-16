@@ -4,7 +4,7 @@ import json from '../data/data.json'
 
 export function useData(tab: string) {
 
-	const [data, setData] = useState<ICustomer[]>([])		// hook for filtered data ready for output
+	const [data, setData] = useState<ICustomer[]>([])
 	const [error, setError] = useState(false)
 
 	const types: {[index: string]: string} = {		// object for filtering type selection

@@ -1,5 +1,4 @@
 import React from 'react'
-import {TableRow} from './TableRow'
 import {ICustomer} from '../models'
 
 interface TableProps {
@@ -9,17 +8,33 @@ interface TableProps {
 export function Table({ data }: TableProps) {
 	return (
 		<div className="py-8 px-2">
-			<div className="flex leading-8 text-center border-b border-b-gray-300">
-				<div className="flex-1">
-					<span className="font-semibold">Name</span>
-				</div>
-				<div className="flex-1">
-					<span className="font-semibold">Amount</span>
-				</div>
-			</div>
-			{data.map( customer => {
-				return <TableRow name={ customer.name } amount={ customer.amount } key={ customer._id }/>
-			} )}
+			<table className="w-full">
+				<thead>
+					<tr className="h-9 border-b border-b-gray-300">
+						<th className="w-3/6">Name</th>
+						<th className="w-3/6">Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					{data.map(customer => {
+						return (
+							<tr className="h-9 border-b border-b-gray-300 text-center last:border-none">
+								<td className="w-3/6">
+									{ `${customer.name.first} ${customer.name.last}` }
+								</td>
+								<td className="w-3/6">
+									{ `${customer.amount}` }
+								</td>
+							</tr>
+						)
+					})}
+				</tbody>
+			</table>
 		</div>
 	)
 }
+
+/*<div className="">
+/*{data.map( customer => {
+				return <TableRow name={ customer.name } amount={ customer.amount } key={ customer._id }/>
+			} )}*/

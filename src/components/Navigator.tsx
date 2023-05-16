@@ -2,8 +2,10 @@ import React from 'react';
 import {useSearchParams} from 'react-router-dom'
 import {useData} from '../hooks/useData'
 import {ErrorQuery} from './ErrorQuery'
-import {TabPanel} from './TabPanel'
+import {Tabs} from './Tabs'
 import {Table} from './Table'
+import {Tab} from './Tab'
+
 
 
 export function Navigator() {
@@ -23,10 +25,14 @@ export function Navigator() {
 		{error && <ErrorQuery />}
 		{!error &&
 			<div className="pt-px border border-black rounded-md">
-				<TabPanel activeTab={ searchTab } onChange={ setSearchTab }/>
-				<Table data={ data } />
-			</div>
-		}	
+				<Tabs onSelect={setSearchTab} activeTab={searchTab}>
+					<Tab title={'Income'} eventKey={'0'} />
+					<Tab title={'Outcome'} eventKey={'1'} />
+					<Tab title={'Loans'} eventKey={'2'} />
+					<Tab title={'Investments'} eventKey={'3'} />
+				</Tabs>
+				<Table data={data} />
+			</div>}
 		</div>
 	)
 }

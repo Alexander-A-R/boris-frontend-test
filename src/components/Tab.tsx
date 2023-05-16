@@ -2,19 +2,19 @@ import React from 'react';
 
 interface TabProps {
 	title: string
-	id: string
-	onClick: (id: string) => void
-	isActive: boolean
+	eventKey: string
+	isActive?: boolean
+	onClick?: () => void
 }
 
-export function Tab({title, id, isActive, onClick} : TabProps) {
+export function Tab({title, eventKey, isActive = false, onClick} : TabProps) {
 
-	const classTab = "flex items-center justify-center flex-1 min-w-min h-10 border-t-2 border-x border-black border-bottom-0 rounded-t-md cursor-pointer select-none"
+	const classTab = "inline-block w-1/4 text-center leading-9 h-10 border-t-2 border-x border-black border-bottom-0 rounded-t-md cursor-pointer select-none"
 	const classTabActive = "bg-slate-300"
 
 	return (
-		<div className={ isActive ? `${classTab} ${classTabActive}` : classTab }
-				onClick={ () => onClick(id) }
-			><span>{title}</span></div>
+		<div className={ isActive ? `${classTab} ${classTabActive}` : classTab } onClick={onClick}>
+			<span>{title}</span>
+		</div>
 	)
 }
