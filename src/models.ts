@@ -1,5 +1,5 @@
 export interface ICustomer {
-	readonly _id: string
+	_id: string
 	amount: number
 	type: string
 	name: {
