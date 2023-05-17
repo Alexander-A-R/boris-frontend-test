@@ -2,7 +2,7 @@ import React, {ReactElement, Children} from 'react';
 
 
 interface TabsProps {
-	children: ReactElement[]
+	children: ReactElement[] | ReactElement
 	activeTab: string
 	onSelect: (id: string) => void
 }
