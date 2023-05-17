@@ -14,23 +14,22 @@ export function useData(tab: string) {
 		'3': 'investment'
 	}
 
-	const type = types[tab] // for useEffect dependency
 
 	useEffect(() => {
 		// there may be a request to the server and that it immediately gives the filtered array
 		try {
-			if (!type) {
+			if (!types[tab]) {
 				const error = new Error('incorrect request')
 				error.name = 'data error'
 				throw error
 			}
-			const filteredData = filterData(json.data, type)
+			const filteredData = filterData(json.data, types[tab])
 			if (filteredData) setData(filteredData)
 		} catch(err: any) {
 			if (err.name === 'data error') setError(true)
 				else throw err
 		}
-	}, [type]);
+	}, [types[tab]]);
 
 
 // filters the data and returns it, or if the type is not specified, then undefined
