@@ -9,7 +9,7 @@ export function useData(tab: string) {
 	const [data, setData] = useState<ICustomer[]>([])
 	const [error, setError] = useState(false)
 
-	const filterTypes: {[index: string]: filter} = {		// object for filtering type selection
+	const filterTypes: {[N: string]: filter} = {		// object for filtering type selection
 		0: 'income',
 		1: 'outcome',
 		2: 'loan',

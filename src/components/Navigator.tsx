@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useSearchParams} from 'react-router-dom'
 import {useData} from '../hooks/useData'
 import {ErrorQuery} from './ErrorQuery'
@@ -14,11 +14,12 @@ export function Navigator() {
 	const searchTab = searchParams.get('tab') || '0'		// if the request is not set, then the first tab will be opened initially
 	const {data, error} = useData(searchTab)		// fetches data, filters it, and checks for errors
 
-// the function sets the "tab" parameter of the query string in the URL by the "id" of the tab
-	function setSearchTab(id: string) {
-		const params = new URLSearchParams(`tab=${id}`)
+// the function sets the "tab" parameter of the query string in the URL by the "eventKey" of the tab
+	const setSearchTab = useCallback((eventKey: string) => {
+		const params = new URLSearchParams(`tab=${eventKey}`)
 		setSearchParams(params)
-	}
+	}, [setSearchParams])
+
 
 	return (
 		<div className="w-96 mx-auto">
