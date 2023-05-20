@@ -1,26 +1,31 @@
 import React, {ReactElement, Children, useState, useEffect} from 'react';
 
 
-interface TabsProps {
+interface ITabsProps {
 	children: ReactElement[] | ReactElement
-	activeTab: string
+	defaultActiveTab: string
 	onSelect: (eventKey: string) => void
 }
 
-export function Tabs({ children, activeTab, onSelect }: TabsProps) {
+export function Tabs({ children, defaultActiveTab, onSelect }: ITabsProps) {
 
-	const [selectTab, setSelectTab] = useState(activeTab)
+	const [selectedTab, setSelectedTab] = useState(defaultActiveTab)
+
+
 
 	useEffect(() => {
-		onSelect(selectTab)
-	}, [selectTab, onSelect])
+		onSelect(selectedTab)
+	}, [selectedTab]) // eslint-disable-line react-hooks/exhaustive-deps
+
+	/* the dependency issue in useEffect could be solved with useCallback,
+	but I think this is not practical, since we don't need the onSelect function in the dependency */
 
 
 	return (
 		<div className="border-b border-b-gray-300">
 			{Children.map(children, (child: ReactElement) =>{
-				const isActive = child.props.eventKey === activeTab
-				return React.cloneElement(child, {isActive, onClick: setSelectTab})
+				const isActive = child.props.eventKey === selectedTab
+				return React.cloneElement(child, {isActive, onClick: setSelectedTab})
 			})}
 		</div>
 	)
